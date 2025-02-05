@@ -43,6 +43,7 @@ android {
 dependencies {
 
     // App dependencies
+    implementation(project(":core:designsystem"))
     implementation(libs.androidx.core.ktx)
 
 

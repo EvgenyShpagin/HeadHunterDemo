@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Head Hunter Demo"
 include(":app")
- 
+include(":core:designsystem")
