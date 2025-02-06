@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="button_apply_for_vacancy">Откликнуться</string>
+    <string name="button_ok">ОК</string>
+    <string name="title_no_internet_error">Интернет соединение отсутствует</string>
+    <string name="title_server_error">Произошла ошибка на сервере</string>
+    <string name="title_other_error">Произошла непредвиденная ошибка</string>
+    <string name="title_not_found_error">Содержимое не найдено, возможно, оно было удалено</string>
 </resources>
