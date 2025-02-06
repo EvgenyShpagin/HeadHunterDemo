@@ -4,7 +4,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
-internal val ColorScheme = lightColorScheme(
+internal val HhColorScheme = lightColorScheme(
     primary = Blue,
     onPrimary = White,
     primaryContainer = Blue,
@@ -28,10 +28,10 @@ internal val ColorScheme = lightColorScheme(
 )
 
 @Composable
-fun HeadHunterDemoTheme(content: @Composable () -> Unit) {
+fun HhTheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        colorScheme = ColorScheme,
-        typography = Typography,
+        colorScheme = HhColorScheme,
+        typography = HhTypography,
         content = content
     )
 }

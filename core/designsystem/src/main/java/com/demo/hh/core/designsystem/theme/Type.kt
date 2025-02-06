@@ -96,7 +96,7 @@ val Number = TextStyle(
     letterSpacing = 0.0.sp
 )
 
-internal val Typography = Typography(
+internal val HhTypography = Typography(
     titleLarge = Title1,
     titleMedium = Title2,
     titleSmall = Title3,
