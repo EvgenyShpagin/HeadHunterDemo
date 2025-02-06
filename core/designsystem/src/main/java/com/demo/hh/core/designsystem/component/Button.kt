@@ -11,6 +11,7 @@ import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -21,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.demo.hh.core.designsystem.icon.HhIcons
 import com.demo.hh.core.designsystem.theme.Blue
+import com.demo.hh.core.designsystem.theme.ButtonText2
 import com.demo.hh.core.designsystem.theme.DarkBlue
 import com.demo.hh.core.designsystem.theme.DarkGreen
 import com.demo.hh.core.designsystem.theme.Green
@@ -72,9 +74,12 @@ fun HhSecondarySmallButton(
         onClick = onClick,
         modifier = modifier.height(40.dp),
         enabled = enabled,
-        shape = CircleShape,
-        content = content
-    )
+        shape = CircleShape
+    ) {
+        ProvideTextStyle(ButtonText2) {
+            content()
+        }
+    }
 }
 
 @Preview
