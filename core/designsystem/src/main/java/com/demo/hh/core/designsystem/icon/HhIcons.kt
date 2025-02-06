@@ -18,65 +18,41 @@ object HhIcons {
         @Composable
         get() = painterResource(R.drawable.ic_bag_16)
 
-    val ChatChecked
+    val Messages
         @Composable
-        get() = painterResource(R.drawable.ic_chat_checked_24)
-
-    val ChatUnchecked
-        @Composable
-        get() = painterResource(R.drawable.ic_chat_unchecked_24)
+        get() = painterResource(R.drawable.ic_messages_24)
 
     val CheckCircle
         @Composable
         get() = painterResource(R.drawable.ic_check_circle_16)
 
-    val HeartCheckedBubble
-        @Composable
-        get() = painterResource(R.drawable.ic_heart_checked_bubble_24)
-
-    val HeartFilled
+    val FavoritesFilled
         @Composable
         get() = painterResource(R.drawable.ic_heart_filled_24)
 
-    val HeartUnchecked
+    val Favorites
         @Composable
-        get() = painterResource(R.drawable.ic_heart_unchecked_24)
+        get() = painterResource(R.drawable.ic_heart_24)
 
-    val HeartUncheckedBubble
+    val Applies
         @Composable
-        get() = painterResource(R.drawable.ic_heart_unchecked_bubble_24)
+        get() = painterResource(R.drawable.ic_applies_24)
 
-    val LetterChecked
+    val Vacancies
         @Composable
-        get() = painterResource(R.drawable.ic_letter_checked_24)
-
-    val LetterUnchecked
-        @Composable
-        get() = painterResource(R.drawable.ic_letter_unchecked_24)
-
-    val ListChecked
-        @Composable
-        get() = painterResource(R.drawable.ic_list_checked_24)
+        get() = painterResource(R.drawable.ic_vacancies_24)
 
     val Map
         @Composable
         get() = painterResource(R.drawable.ic_map_24)
 
-    val ProfileChecked
+    val Profile
         @Composable
-        get() = painterResource(R.drawable.ic_profile_checked_24)
+        get() = painterResource(R.drawable.ic_profile_24)
 
-    val ProfileUnchecked
+    val Search
         @Composable
-        get() = painterResource(R.drawable.ic_profile_unchecked_24)
-
-    val SearchChecked
-        @Composable
-        get() = painterResource(R.drawable.ic_search_checked_24)
-
-    val SearchUnchecked
-        @Composable
-        get() = painterResource(R.drawable.ic_search_unchecked_24)
+        get() = painterResource(R.drawable.ic_search_24)
 
     val Settings
         @Composable
