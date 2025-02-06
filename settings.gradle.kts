@@ -23,3 +23,4 @@ rootProject.name = "Head Hunter Demo"
 include(":app")
 include(":core:designsystem")
 include(":core:common")
+include(":core:model")
