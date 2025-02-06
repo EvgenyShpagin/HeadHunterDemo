@@ -5,6 +5,7 @@
       <module name="Head_Hunter_Demo.core.main" target="11" />
       <module name="Head_Hunter_Demo.core.test" target="11" />
       <module name="Head_Hunter_Demo.designsystem" target="21" />
+      <module name="Head_Hunter_Demo.main" target="21" />
       <module name="Head_Hunter_Demo.mvi" target="21" />
     </bytecodeTargetLevel>
   </component>
