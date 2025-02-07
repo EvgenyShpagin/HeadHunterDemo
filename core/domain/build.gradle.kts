@@ -12,7 +12,7 @@ kotlin {
     }
 }
 dependencies {
-    implementation(project(":core:model"))
-    implementation(project(":core:common"))
+    api(project(":core:model"))
+    api(project(":core:common"))
     implementation(libs.kotlinx.coroutines.core)
 }
