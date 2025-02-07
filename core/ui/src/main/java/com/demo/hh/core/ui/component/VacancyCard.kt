@@ -37,7 +37,7 @@ private val LookingNumberTextStyle = Text1.copy(color = Green)
 private val PublishDateTextStyle = Text1.copy(color = Grey3)
 
 @Composable
-internal fun VacancyCard(
+fun VacancyCard(
     state: VacancyCardUiState,
     onFavoriteClick: () -> Unit,
     onApplyClick: () -> Unit,
