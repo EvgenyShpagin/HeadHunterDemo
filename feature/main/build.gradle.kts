@@ -35,6 +35,7 @@ dependencies {
     implementation(project(":core:model"))
     implementation(project(":core:mvi"))
     implementation(project(":core:domain"))
+    implementation(project(":core:designsystem"))
 
     // Architecture Components
     implementation(libs.androidx.lifecycle.viewmodel.compose)
