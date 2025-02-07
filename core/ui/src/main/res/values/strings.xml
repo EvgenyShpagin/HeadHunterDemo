@@ -8,4 +8,23 @@
     <string name="title_not_found_error">Содержимое не найдено, возможно, оно было удалено</string>
     <string name="cd_button_set_favorite">Добавить вакансию в избранное</string>
     <string name="cd_button_unset_favorite">Убрать вакансию из избранного</string>
+    <string name="experience_none">Без опыта</string>
+    <string name="experience_1_to_3_years">Опыт от 1 года до 3 лет</string>
+    <string name="experience_3_to_6_years">Опыт от 3 до 6 лет</string>
+    <string name="experience_from_6_years">Опыт более 6 лет</string>
+    <string name="publish_date">Опубликовано %d %s</string>
+    <string-array name="publish_date_suffix_month">
+        <item>января</item>
+        <item>февраля</item>
+        <item>марта</item>
+        <item>апреля</item>
+        <item>мая</item>
+        <item>июня</item>
+        <item>июля</item>
+        <item>августа</item>
+        <item>сентября</item>
+        <item>октября</item>
+        <item>ноября</item>
+        <item>декабря</item>
+    </string-array>
 </resources>
