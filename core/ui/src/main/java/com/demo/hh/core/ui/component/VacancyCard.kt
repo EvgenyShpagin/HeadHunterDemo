@@ -68,8 +68,8 @@ internal fun VacancyCard(
                         LookingNumber(state.lookingNumber)
                     }
                     Text(state.title, style = Title3)
-                    if (state.salary !is Salary.Unspecified) {
-                        Text(state.salary.asString(), style = Title2)
+                    if (state.salary != null) {
+                        Text(state.salary, style = Title2)
                     }
                     Column {
                         Text(state.town, style = Text1)
@@ -84,12 +84,12 @@ internal fun VacancyCard(
                         Icon(HhIcons.Bag, null, tint = White)
                         Spacer(Modifier.size(8.dp))
                         Text(
-                            state.experience.asString(),
+                            state.experience,
                             style = Text1
                         )
                     }
                     Text(
-                        state.publishDate.asString(),
+                        state.publishDate,
                         style = PublishDateTextStyle
                     )
                 }
@@ -132,9 +132,9 @@ private fun VacancyCardPreview() {
                 title = "Дизайнер для маркетплейсов Wildberries, Ozon ",
                 town = "Минск",
                 company = "Мобирикс",
-                salary = Salary.Exact(100_000),
-                experience = Experience.From1To3Years,
-                publishDate = Date(2025, 1, 1),
+                salary = Salary.Exact(100_000).asString(),
+                experience = Experience.From1To3Years.asString(),
+                publishDate = Date(2025, 1, 1).asString(),
                 isFavorite = false
             ),
             onApplyClick = {},
