@@ -1,26 +1,25 @@
 package com.demo.hh.core.ui.util
 
-import androidx.compose.runtime.Composable
-import com.demo.hh.core.model.Date
-import com.demo.hh.core.model.Experience
-import com.demo.hh.core.model.Salary
+import android.content.Context
 import com.demo.hh.core.model.Vacancy
 import com.demo.hh.core.ui.state.VacancyCardUiState
 
-@Composable
-fun Vacancy.toVacancyCardUiState(
-    experienceFormatter: @Composable (experience: Experience) -> String = { it.asString() },
-    dateFormatter: @Composable (date: Date) -> String = { it.asString() },
-    salaryFormatter: @Composable (salary: Salary) -> String = { it.asString() },
-): VacancyCardUiState {
-    return VacancyCardUiState(
-        title = title,
-        lookingNumber = lookingNumber,
-        salary = salaryFormatter(salary),
-        town = address.town,
-        company = company,
-        experience = experienceFormatter(experience),
-        publishDate = dateFormatter(publishedDate),
-        isFavorite = isFavorite,
-    )
+
+interface VacancyCardUiStateMapper {
+    fun map(vacancy: Vacancy): VacancyCardUiState
+}
+
+class VacancyCardUiStateMapperImpl(private val applicationContext: Context) : VacancyCardUiStateMapper {
+    override fun map(vacancy: Vacancy): VacancyCardUiState {
+        return VacancyCardUiState(
+            title = vacancy.title,
+            lookingNumber = vacancy.lookingNumber,
+            salary = vacancy.salary.toString(applicationContext),
+            town = vacancy.address.town,
+            company = vacancy.company,
+            experience = vacancy.experience.toString(applicationContext),
+            publishDate = vacancy.publishedDate.toString(applicationContext),
+            isFavorite = vacancy.isFavorite,
+        )
+    }
 }

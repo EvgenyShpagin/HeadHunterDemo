@@ -1,16 +1,15 @@
 package com.demo.hh.core.ui.util
 
+import android.content.Context
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringArrayResource
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalContext
 import com.demo.hh.core.model.Date
 import com.demo.hh.core.model.Experience
 import com.demo.hh.core.model.Salary
 import com.demo.hh.core.ui.R
 
-@Composable
-fun Experience.asString(): String {
-    return stringResource(
+fun Experience.toString(context: Context): String {
+    return context.getString(
         when (this) {
             Experience.None -> R.string.experience_none
             Experience.From1To3Years -> R.string.experience_1_to_3_years
@@ -20,33 +19,49 @@ fun Experience.asString(): String {
     )
 }
 
-@Composable
-fun Date.asString(): String {
-    val months = stringArrayResource(R.array.publish_date_suffix_month)
-    return stringResource(
+fun Date.toString(context: Context): String {
+    val months = context.resources.getStringArray(R.array.publish_date_suffix_month)
+    return context.getString(
         R.string.publish_date,
         dayOfMonth,
         months[month - 1]
     )
 }
 
-@Composable
-fun Salary.asString(): String {
+fun Salary.toString(context: Context): String {
     return when (this) {
-        is Salary.Exact -> stringResource(R.string.salary_exact, amount, currencySign)
+        is Salary.Exact -> context.getString(R.string.salary_exact, amount, currencySign)
         is Salary.Range -> when {
             fromAmount != null && toAmount != null ->
-                stringResource(R.string.salary_range, fromAmount!!, toAmount!!, currencySign)
+                context.getString(R.string.salary_range, fromAmount!!, toAmount!!, currencySign)
 
             fromAmount != null ->
-                stringResource(R.string.salary_range_from, fromAmount!!, currencySign)
+                context.getString(R.string.salary_range_from, fromAmount!!, currencySign)
 
             toAmount != null ->
-                stringResource(R.string.salary_range_to, toAmount!!, currencySign)
+                context.getString(R.string.salary_range_to, toAmount!!, currencySign)
 
-            else -> stringResource(R.string.salary_not_specified)
+            else -> context.getString(R.string.salary_not_specified)
         }
 
-        Salary.Unspecified -> stringResource(R.string.salary_not_specified)
+        Salary.Unspecified -> context.getString(R.string.salary_not_specified)
     }
+}
+
+@Composable
+internal fun Experience.asString(): String {
+    val context = LocalContext.current
+    return toString(context)
+}
+
+@Composable
+internal fun Date.asString(): String {
+    val context = LocalContext.current
+    return toString(context)
+}
+
+@Composable
+internal fun Salary.asString(): String {
+    val context = LocalContext.current
+    return toString(context)
 }
