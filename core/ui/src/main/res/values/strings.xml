@@ -6,4 +6,6 @@
     <string name="title_server_error">Произошла ошибка на сервере</string>
     <string name="title_other_error">Произошла непредвиденная ошибка</string>
     <string name="title_not_found_error">Содержимое не найдено, возможно, оно было удалено</string>
+    <string name="cd_button_set_favorite">Добавить вакансию в избранное</string>
+    <string name="cd_button_unset_favorite">Убрать вакансию из избранного</string>
 </resources>
