@@ -20,7 +20,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.demo.hh.core.designsystem.icon.HhIcons
@@ -33,8 +32,8 @@ import com.demo.hh.core.designsystem.theme.White
 
 @Composable
 fun HhTextField(
-    value: TextFieldValue,
-    onValueChange: (TextFieldValue) -> Unit,
+    value: String,
+    onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     placeholder: @Composable (() -> Unit)? = null,
@@ -68,7 +67,7 @@ fun HhTextField(
                         Spacer(Modifier.width(8.dp))
                     }
                     Box(Modifier.weight(1f)) {
-                        if (value.annotatedString.isEmpty()) {
+                        if (value.isEmpty()) {
                             ProvideTextStyle(Text1.copy(color = Grey4)) {
                                 placeholder?.invoke()
                             }
@@ -101,7 +100,7 @@ fun HhTextField(
 private fun HhTextFieldDefaultPreview() {
     HhTheme {
         HhTextField(
-            value = TextFieldValue("Content"),
+            value = "Content",
             onValueChange = {},
             leadingIcon = {
                 Icon(HhIcons.Search, null)
@@ -118,7 +117,7 @@ private fun HhTextFieldDefaultPreview() {
 private fun HhTextFieldErrorPreview() {
     HhTheme {
         HhTextField(
-            value = TextFieldValue(""),
+            value = "",
             onValueChange = {},
             placeholder = {
                 Text("Placeholder")
