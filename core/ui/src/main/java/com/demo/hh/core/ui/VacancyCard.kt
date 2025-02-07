@@ -29,13 +29,8 @@ import com.demo.hh.core.designsystem.theme.HhTheme
 import com.demo.hh.core.designsystem.theme.Text1
 import com.demo.hh.core.designsystem.theme.Title3
 import com.demo.hh.core.designsystem.theme.White
-import com.demo.hh.core.model.Address
 import com.demo.hh.core.model.Date
-import com.demo.hh.core.model.EmploymentType
 import com.demo.hh.core.model.Experience
-import com.demo.hh.core.model.Salary
-import com.demo.hh.core.model.Schedule
-import com.demo.hh.core.model.Vacancy
 
 
 private val LookingNumberTextStyle = Text1.copy(color = Green)
@@ -43,7 +38,13 @@ private val PublishDateTextStyle = Text1.copy(color = Grey3)
 
 @Composable
 internal fun VacancyCard(
-    vacancy: Vacancy,
+    title: String,
+    lookingNumber: Int,
+    town: String,
+    company: String,
+    experience: Experience,
+    publishDate: Date,
+    isFavorite: Boolean,
     onFavoriteClick: () -> Unit,
     onApplyClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -66,15 +67,15 @@ internal fun VacancyCard(
                     modifier = Modifier.widthIn(max = 220.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                    if (vacancy.lookingNumber != 0) {
-                        LookingNumber(vacancy.lookingNumber)
+                    if (lookingNumber != 0) {
+                        LookingNumber(lookingNumber)
                     }
-                    Text(vacancy.title, style = Title3)
+                    Text(title, style = Title3)
                     Column {
-                        Text(vacancy.address.town, style = Text1)
+                        Text(town, style = Text1)
                         Spacer(Modifier.size(4.dp))
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(vacancy.company, style = Text1)
+                            Text(company, style = Text1)
                             Spacer(Modifier.size(8.dp))
                             Icon(HhIcons.CheckCircle, null, tint = Grey3)
                         }
@@ -83,19 +84,19 @@ internal fun VacancyCard(
                         Icon(HhIcons.Bag, null, tint = White)
                         Spacer(Modifier.size(8.dp))
                         Text(
-                            vacancy.experience.asString(),
+                            experience.asString(),
                             style = Text1
                         )
                     }
                     Text(
-                        vacancy.publishedDate.asString(),
+                        publishDate.asString(),
                         style = PublishDateTextStyle
                     )
                 }
                 Box(modifier = Modifier.weight(1f)) {
                     FavoriteIconButton(
                         onClick = onFavoriteClick,
-                        isFavorite = vacancy.isFavorite,
+                        isFavorite = isFavorite,
                         modifier = Modifier.align(Alignment.TopEnd)
                     )
                 }
@@ -147,22 +148,13 @@ private fun LookingNumber(
 private fun VacancyCardPreview() {
     HhTheme {
         VacancyCard(
-            vacancy = Vacancy(
-                id = "",
-                lookingNumber = 3,
-                title = "Дизайнер для маркетплейсов Wildberries, Ozon ",
-                address = Address("Минск", "", ""),
-                company = "Мобирикс",
-                experience = Experience.From1To3Years,
-                publishedDate = Date(2025, 1, 1),
-                isFavorite = false,
-                salary = Salary.Exact(100_000),
-                schedules = EmploymentType.FullTime to Schedule.RemoteWork,
-                appliedNumber = 0,
-                description = "",
-                responsibilities = "",
-                questions = emptyList()
-            ),
+            lookingNumber = 3,
+            title = "Дизайнер для маркетплейсов Wildberries, Ozon ",
+            town = "Минск",
+            company = "Мобирикс",
+            experience = Experience.From1To3Years,
+            publishDate = Date(2025, 1, 1),
+            isFavorite = false,
             onApplyClick = {},
             onFavoriteClick = {}
         )
