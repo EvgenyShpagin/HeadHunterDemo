@@ -28,12 +28,9 @@ import com.demo.hh.core.designsystem.theme.Text1
 import com.demo.hh.core.designsystem.theme.Title2
 import com.demo.hh.core.designsystem.theme.Title3
 import com.demo.hh.core.designsystem.theme.White
-import com.demo.hh.core.model.Date
-import com.demo.hh.core.model.Experience
-import com.demo.hh.core.model.Salary
 import com.demo.hh.core.ui.R
 import com.demo.hh.core.ui.state.VacancyCardUiState
-import com.demo.hh.core.ui.util.asString
+import com.demo.hh.core.ui.util.PreviewVacancyCardUiStateList
 
 
 private val LookingNumberTextStyle = Text1.copy(color = Green)
@@ -127,17 +124,7 @@ private fun LookingNumber(
 private fun VacancyCardPreview() {
     HhTheme {
         VacancyCard(
-            VacancyCardUiState(
-                id = "",
-                lookingNumber = 3,
-                title = "Дизайнер для маркетплейсов Wildberries, Ozon ",
-                town = "Минск",
-                company = "Мобирикс",
-                salary = Salary.Exact(100_000).asString(),
-                experience = Experience.From1To3Years.asString(),
-                publishDate = Date(2025, 1, 1).asString(),
-                isFavorite = false
-            ),
+            PreviewVacancyCardUiStateList.first(),
             onApplyClick = {},
             onFavoriteClick = {}
         )
