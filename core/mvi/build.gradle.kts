@@ -28,6 +28,6 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.lifecycle.viewmodel.android)
 }
