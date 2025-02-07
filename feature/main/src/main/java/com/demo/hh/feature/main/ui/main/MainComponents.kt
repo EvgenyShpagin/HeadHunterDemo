@@ -103,12 +103,7 @@ private fun OfferIcon(
 @Composable
 private fun OfferCardPreview() {
     OfferCard(
-        Offer(
-            id = "level_up_resume",
-            title = "Поднять резюме в поиске",
-            link = "",
-            action = "Поднять"
-        ),
+        PreviewOfferList[1],
         onClick = {}
     )
 }
@@ -136,29 +131,7 @@ internal fun OfferList(
 @Composable
 private fun OfferListPreview() {
     OfferList(
-        listOf(
-            Offer(
-                id = "near_vacancies",
-                title = "Вакансии рядом с вами",
-                link = ""
-            ),
-            Offer(
-                id = "level_up_resume",
-                title = "Поднять резюме в поиске",
-                link = "",
-                action = "Поднять"
-            ),
-            Offer(
-                id = "temporary_job",
-                title = "Временная работа или подработка",
-                link = ""
-            ),
-            Offer(
-                id = "",
-                title = "Полезные статьи и советы",
-                link = "",
-            )
-        ),
+        PreviewOfferList,
         onOfferClick = {}
     )
 }
