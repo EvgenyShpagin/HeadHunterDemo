@@ -4,8 +4,9 @@ import androidx.lifecycle.viewModelScope
 import com.demo.hh.core.domain.usecase.GetRelevantVacanciesUseCase
 import com.demo.hh.core.domain.usecase.GetRelevantVacancyCountUseCase
 import com.demo.hh.core.domain.usecase.SetVacancyFavoriteUseCase
-import com.demo.hh.core.model.Vacancy
 import com.demo.hh.core.mvi.ImmutableStateViewModel
+import com.demo.hh.core.ui.state.VacancyCardUiState
+import com.demo.hh.core.ui.util.VacancyCardUiStateMapper
 import com.demo.hh.feature.main.domain.GetOffersUseCase
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
@@ -18,6 +19,7 @@ class MainViewModel(
     getOffersUseCase: GetOffersUseCase,
     getRelevantVacanciesUseCase: GetRelevantVacanciesUseCase,
     getRelevantVacancyCountUseCase: GetRelevantVacancyCountUseCase,
+    private val vacancyCardMapper: VacancyCardUiStateMapper,
     private val setVacancyFavoriteUseCase: SetVacancyFavoriteUseCase
 ) : ImmutableStateViewModel<MainUiState, MainUiEvent, MainUiEffect>() {
 
@@ -29,7 +31,7 @@ class MainViewModel(
         MainUiState(
             isLoading = false,
             offers = offers,
-            relevantVacancies = vacancies,
+            relevantVacancies = vacancies.map { vacancyCardMapper.map(it) },
             moreVacancyCount = vacancyCount - INIT_VACANCY_COUNT
         )
     }.stateIn(
@@ -57,7 +59,7 @@ class MainViewModel(
         return uiState.value.relevantVacancies.isFavorite(id)
     }
 
-    private fun List<Vacancy>.isFavorite(id: String): Boolean {
+    private fun List<VacancyCardUiState>.isFavorite(id: String): Boolean {
         return find { it.id == id && it.isFavorite }!!.isFavorite
     }
 }
