@@ -32,6 +32,7 @@ import com.demo.hh.core.model.Date
 import com.demo.hh.core.model.Experience
 import com.demo.hh.core.model.Salary
 import com.demo.hh.core.ui.R
+import com.demo.hh.core.ui.state.VacancyCardUiState
 import com.demo.hh.core.ui.util.asString
 
 
@@ -40,14 +41,7 @@ private val PublishDateTextStyle = Text1.copy(color = Grey3)
 
 @Composable
 internal fun VacancyCard(
-    title: String,
-    lookingNumber: Int,
-    salary: Salary,
-    town: String,
-    company: String,
-    experience: Experience,
-    publishDate: Date,
-    isFavorite: Boolean,
+    state: VacancyCardUiState,
     onFavoriteClick: () -> Unit,
     onApplyClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -70,18 +64,18 @@ internal fun VacancyCard(
                     modifier = Modifier.widthIn(max = 220.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                    if (lookingNumber != 0) {
-                        LookingNumber(lookingNumber)
+                    if (state.lookingNumber != 0) {
+                        LookingNumber(state.lookingNumber)
                     }
-                    Text(title, style = Title3)
-                    if (salary !is Salary.Unspecified) {
-                        Text(salary.asString(), style = Title2)
+                    Text(state.title, style = Title3)
+                    if (state.salary !is Salary.Unspecified) {
+                        Text(state.salary.asString(), style = Title2)
                     }
                     Column {
-                        Text(town, style = Text1)
+                        Text(state.town, style = Text1)
                         Spacer(Modifier.size(4.dp))
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(company, style = Text1)
+                            Text(state.company, style = Text1)
                             Spacer(Modifier.size(8.dp))
                             Icon(HhIcons.CheckCircle, null, tint = Grey3)
                         }
@@ -90,19 +84,19 @@ internal fun VacancyCard(
                         Icon(HhIcons.Bag, null, tint = White)
                         Spacer(Modifier.size(8.dp))
                         Text(
-                            experience.asString(),
+                            state.experience.asString(),
                             style = Text1
                         )
                     }
                     Text(
-                        publishDate.asString(),
+                        state.publishDate.asString(),
                         style = PublishDateTextStyle
                     )
                 }
                 Box(modifier = Modifier.weight(1f)) {
                     FavoriteIconButton(
                         onClick = onFavoriteClick,
-                        isFavorite = isFavorite,
+                        isFavorite = state.isFavorite,
                         modifier = Modifier.align(Alignment.TopEnd)
                     )
                 }
@@ -133,14 +127,16 @@ private fun LookingNumber(
 private fun VacancyCardPreview() {
     HhTheme {
         VacancyCard(
-            lookingNumber = 3,
-            title = "Дизайнер для маркетплейсов Wildberries, Ozon ",
-            town = "Минск",
-            company = "Мобирикс",
-            salary = Salary.Exact(100_000),
-            experience = Experience.From1To3Years,
-            publishDate = Date(2025, 1, 1),
-            isFavorite = false,
+            VacancyCardUiState(
+                lookingNumber = 3,
+                title = "Дизайнер для маркетплейсов Wildberries, Ozon ",
+                town = "Минск",
+                company = "Мобирикс",
+                salary = Salary.Exact(100_000),
+                experience = Experience.From1To3Years,
+                publishDate = Date(2025, 1, 1),
+                isFavorite = false
+            ),
             onApplyClick = {},
             onFavoriteClick = {}
         )
