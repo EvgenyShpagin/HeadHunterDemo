@@ -37,6 +37,7 @@ dependencies {
     implementation(project(":core:domain"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:ui"))
+    implementation(project(":core:data"))
     implementation(libs.kotlinx.serialization.json)
 
     // Architecture Components

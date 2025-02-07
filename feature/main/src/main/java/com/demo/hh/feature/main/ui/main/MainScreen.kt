@@ -21,15 +21,24 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.demo.hh.core.common.network.FetchError
 import com.demo.hh.core.designsystem.theme.HhTheme
 import com.demo.hh.core.designsystem.theme.Title2
 import com.demo.hh.core.model.Offer
+import com.demo.hh.core.mvi.HandleUiEffects
+import com.demo.hh.core.ui.component.NoInternetDialog
+import com.demo.hh.core.ui.component.NotFoundErrorDialog
+import com.demo.hh.core.ui.component.OtherConnectionErrorDialog
+import com.demo.hh.core.ui.component.ServerErrorDialog
 import com.demo.hh.core.ui.component.VacancyCard
 import com.demo.hh.core.ui.state.VacancyCardUiState
 import com.demo.hh.core.ui.util.PreviewVacancyCardUiStateList
@@ -43,6 +52,14 @@ internal fun MainScreen(
 ) {
     BackHandler {
         navigateBack()
+    }
+
+    var error by remember { mutableStateOf<FetchError?>(null) }
+
+    HandleUiEffects(viewModel.uiEffect) { effect ->
+        when (effect) {
+            is MainUiEffect.ShowError -> error = effect.error
+        }
     }
 
     val layoutDirection = LocalLayoutDirection.current
@@ -64,6 +81,8 @@ internal fun MainScreen(
         onApplyClick = { TODO() },
         moreVacancyCount = uiState.moreVacancyCount,
         onMoreVacancyClicked = { TODO() },
+        onDismissError = { error = null },
+        error = error,
         modifier = modifier.padding(
             start = startPadding,
             top = topPadding,
@@ -71,7 +90,6 @@ internal fun MainScreen(
             bottom = bottomPadding
         )
     )
-
 }
 
 @Composable
@@ -85,9 +103,18 @@ private fun MainContent(
     onMoreVacancyClicked: () -> Unit,
     isLoading: Boolean,
     modifier: Modifier = Modifier,
+    error: FetchError? = null,
+    onDismissError: () -> Unit,
     lazyListState: LazyListState = rememberLazyListState()
 ) {
-
+    if (error != null) {
+        when (error) {
+            FetchError.NoInternet -> NoInternetDialog(onDismissError)
+            FetchError.NotFound -> NotFoundErrorDialog(onDismissError)
+            FetchError.OtherConnectionError -> OtherConnectionErrorDialog(onDismissError)
+            FetchError.ServerError -> ServerErrorDialog(onDismissError)
+        }
+    }
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -130,7 +157,9 @@ private fun MainContent(
             MoreVacancyButton(
                 moreVacancyCount = moreVacancyCount,
                 onClick = onMoreVacancyClicked,
-                modifier = Modifier.fillMaxWidth().padding(start = 16.dp, bottom = 8.dp, end = 16.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, bottom = 8.dp, end = 16.dp)
             )
         }
     }
@@ -149,6 +178,8 @@ private fun MainContentPreview() {
                 onApplyClick = {},
                 onFavoriteClick = {},
                 moreVacancyCount = 9,
+                error = FetchError.NoInternet,
+                onDismissError = {},
                 onMoreVacancyClicked = {}
             )
         }
