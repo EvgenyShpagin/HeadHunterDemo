@@ -1,4 +1,4 @@
-package com.demo.hh.core.ui
+package com.demo.hh.core.ui.util
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringArrayResource
@@ -6,6 +6,7 @@ import androidx.compose.ui.res.stringResource
 import com.demo.hh.core.model.Date
 import com.demo.hh.core.model.Experience
 import com.demo.hh.core.model.Salary
+import com.demo.hh.core.ui.R
 
 @Composable
 fun Experience.asString(): String {

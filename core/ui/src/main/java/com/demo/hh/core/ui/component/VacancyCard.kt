@@ -1,4 +1,4 @@
-package com.demo.hh.core.ui
+package com.demo.hh.core.ui.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,6 +31,8 @@ import com.demo.hh.core.designsystem.theme.White
 import com.demo.hh.core.model.Date
 import com.demo.hh.core.model.Experience
 import com.demo.hh.core.model.Salary
+import com.demo.hh.core.ui.R
+import com.demo.hh.core.ui.util.asString
 
 
 private val LookingNumberTextStyle = Text1.copy(color = Green)

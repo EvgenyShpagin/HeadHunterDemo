@@ -1,4 +1,4 @@
-package com.demo.hh.core.ui
+package com.demo.hh.core.ui.component
 
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
@@ -10,6 +10,7 @@ import com.demo.hh.core.designsystem.theme.Black
 import com.demo.hh.core.designsystem.theme.HhTheme
 import com.demo.hh.core.designsystem.theme.Title3
 import com.demo.hh.core.designsystem.theme.White
+import com.demo.hh.core.ui.R
 
 @Composable
 fun NoInternetDialog(onDismissRequest: () -> Unit, modifier: Modifier = Modifier) {

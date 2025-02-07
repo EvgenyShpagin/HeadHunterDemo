@@ -1,4 +1,4 @@
-package com.demo.hh.core.ui
+package com.demo.hh.core.ui.component
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -8,6 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.demo.hh.core.designsystem.component.HhSecondaryLargeButton
 import com.demo.hh.core.designsystem.component.HhSecondarySmallButton
 import com.demo.hh.core.designsystem.theme.HhTheme
+import com.demo.hh.core.ui.R
 
 @Composable
 fun VacancyApplyButton(

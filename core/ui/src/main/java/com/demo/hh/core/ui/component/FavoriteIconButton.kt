@@ -1,4 +1,4 @@
-package com.demo.hh.core.ui
+package com.demo.hh.core.ui.component
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -10,6 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.demo.hh.core.designsystem.icon.HhIcons
 import com.demo.hh.core.designsystem.theme.Blue
+import com.demo.hh.core.ui.R
 
 @Composable
 fun FavoriteIconButton(
