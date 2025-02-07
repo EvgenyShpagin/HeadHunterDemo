@@ -45,6 +45,7 @@ dependencies {
     // App dependencies
     implementation(project(":core:designsystem"))
     implementation(project(":core:common"))
+    implementation(project(":feature:main"))
     implementation(libs.androidx.core.ktx)
 
 
