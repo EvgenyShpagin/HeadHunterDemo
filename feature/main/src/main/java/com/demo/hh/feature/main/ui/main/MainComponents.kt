@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -22,6 +23,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.demo.hh.core.designsystem.component.HhFilledIconButton
+import com.demo.hh.core.designsystem.component.HhTextField
 import com.demo.hh.core.designsystem.icon.HhIcons
 import com.demo.hh.core.designsystem.theme.Blue
 import com.demo.hh.core.designsystem.theme.DarkBlue
@@ -158,4 +161,31 @@ private fun OfferListPreview() {
         ),
         onOfferClick = {}
     )
+}
+
+@Composable
+internal fun MainSearchBar(
+    input: String,
+    onInput: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        HhTextField(
+            value = input,
+            onValueChange = onInput,
+            modifier = Modifier.weight(1f)
+        )
+        HhFilledIconButton(onClick = {}) {
+            Icon(HhIcons.Settings, contentDescription = null)
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun MainSearchBarPreview() {
+    MainSearchBar("", {})
 }
