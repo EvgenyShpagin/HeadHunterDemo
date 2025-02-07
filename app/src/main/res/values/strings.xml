@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Head Hunter Demo</string>
+    <string name="destination_main">Поиск</string>
+    <string name="destination_favorites">Избранное</string>
+    <string name="destination_applies">Отклики</string>
+    <string name="destination_messages">Сообщения</string>
+    <string name="destination_profile">Профиль</string>
 </resources>
