@@ -37,6 +37,7 @@ dependencies {
     implementation(project(":core:domain"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:ui"))
+    implementation(libs.kotlinx.serialization.json)
 
     // Architecture Components
     implementation(libs.androidx.lifecycle.viewmodel.compose)
