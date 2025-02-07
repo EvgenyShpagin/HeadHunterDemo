@@ -42,24 +42,16 @@ class MainViewModel(
 
     override fun onEvent(event: MainUiEvent) {
         when (event) {
-            is MainUiEvent.SetFavorite -> setFavorite(event.vacancyId)
+            is MainUiEvent.SetFavorite -> setFavorite(event.vacancy)
         }
     }
 
-    private fun setFavorite(vacancyId: String) {
+    private fun setFavorite(vacancy: VacancyCardUiState) {
         viewModelScope.launch {
             setVacancyFavoriteUseCase(
-                vacancyId,
-                favorite = !isFavorite(vacancyId)
+                vacancyId = vacancy.id,
+                favorite = !vacancy.isFavorite
             )
         }
-    }
-
-    private fun isFavorite(id: String): Boolean {
-        return uiState.value.relevantVacancies.isFavorite(id)
-    }
-
-    private fun List<VacancyCardUiState>.isFavorite(id: String): Boolean {
-        return find { it.id == id && it.isFavorite }!!.isFavorite
     }
 }
