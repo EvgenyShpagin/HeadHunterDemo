@@ -10,7 +10,7 @@ data class Vacancy(
     val publishedDate: Date,
     val isFavorite: Boolean,
     val salary: Salary,
-    val schedules: List<String>,
+    val schedules: Pair<EmploymentType, Schedule>,
     val appliedNumber: Int? = null,
     val description: String,
     val responsibilities: String,
