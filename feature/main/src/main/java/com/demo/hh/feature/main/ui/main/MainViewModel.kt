@@ -1,6 +1,8 @@
 package com.demo.hh.feature.main.ui.main
 
 import androidx.lifecycle.viewModelScope
+import com.demo.hh.core.common.network.FetchError
+import com.demo.hh.core.common.result.Result
 import com.demo.hh.core.domain.usecase.GetRelevantVacanciesUseCase
 import com.demo.hh.core.domain.usecase.GetRelevantVacancyCountUseCase
 import com.demo.hh.core.domain.usecase.SetVacancyFavoriteUseCase
@@ -27,12 +29,19 @@ class MainViewModel(
         getOffersUseCase(),
         getRelevantVacanciesUseCase(INIT_VACANCY_COUNT),
         getRelevantVacancyCountUseCase()
-    ) { offers, vacancies, vacancyCount ->
+    ) { offersResult, vacanciesResult, vacancyCountResult ->
+        doOnError(offersResult, vacanciesResult, vacancyCountResult) { error ->
+            triggerEffect(MainUiEffect.ShowError(error))
+            return@combine MainUiState()
+        }
+        val offers = offersResult.requireData()
+        val vacancies = vacanciesResult.requireData()
+        val vacanciesCount = vacancyCountResult.requireData()
         MainUiState(
             isLoading = false,
             offers = offers,
             relevantVacancies = vacancies.map { vacancyCardMapper.map(it) },
-            moreVacancyCount = vacancyCount - INIT_VACANCY_COUNT
+            moreVacancyCount = vacanciesCount - INIT_VACANCY_COUNT
         )
     }.stateIn(
         scope = viewModelScope,
@@ -52,6 +61,18 @@ class MainViewModel(
                 vacancyId = vacancy.id,
                 favorite = !vacancy.isFavorite
             )
+        }
+    }
+
+    private inline fun doOnError(
+        vararg result: Result<*, FetchError>,
+        action: (FetchError) -> Unit
+    ) {
+        result.forEach { result ->
+            result.onFailure { error ->
+                action(error)
+                return
+            }
         }
     }
 }
