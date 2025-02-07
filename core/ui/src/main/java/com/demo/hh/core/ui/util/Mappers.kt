@@ -12,6 +12,7 @@ interface VacancyCardUiStateMapper {
 class VacancyCardUiStateMapperImpl(private val applicationContext: Context) : VacancyCardUiStateMapper {
     override fun map(vacancy: Vacancy): VacancyCardUiState {
         return VacancyCardUiState(
+            id = vacancy.id,
             title = vacancy.title,
             lookingNumber = vacancy.lookingNumber,
             salary = vacancy.salary.toString(applicationContext),

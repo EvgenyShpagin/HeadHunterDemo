@@ -1,6 +1,7 @@
 package com.demo.hh.core.ui.state
 
 data class VacancyCardUiState(
+    val id: String,
     val title: String,
     val lookingNumber: Int,
     val salary: String?,

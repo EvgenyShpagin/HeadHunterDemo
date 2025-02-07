@@ -128,6 +128,7 @@ private fun VacancyCardPreview() {
     HhTheme {
         VacancyCard(
             VacancyCardUiState(
+                id = "",
                 lookingNumber = 3,
                 title = "Дизайнер для маркетплейсов Wildberries, Ozon ",
                 town = "Минск",
