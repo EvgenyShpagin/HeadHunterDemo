@@ -14,32 +14,32 @@ import kotlin.reflect.KClass
 
 enum class TopLevelDestination(
     val icon: @Composable () -> Unit,
-    @StringRes val iconTextId: Int,
+    @StringRes val labelTextId: Int,
     val route: KClass<*>,
 ) {
     MAIN(
         icon = { Icon(HhIcons.Search, null) },
-        iconTextId = R.string.destination_main,
+        labelTextId = R.string.destination_main,
         route = MainDestination::class,
     ),
     FAVORITES(
         icon = { Icon(HhIcons.Favorites, null) },
-        iconTextId = R.string.destination_main,
+        labelTextId = R.string.destination_main,
         route = Favorites::class,
     ),
     APPLIES(
         icon = { Icon(HhIcons.Applies, null) },
-        iconTextId = R.string.destination_applies,
+        labelTextId = R.string.destination_applies,
         route = Applies::class,
     ),
     MESSAGES(
         icon = { Icon(HhIcons.Messages, null) },
-        iconTextId = R.string.destination_messages,
+        labelTextId = R.string.destination_messages,
         route = Messages::class,
     ),
     PROFILE(
         icon = { Icon(HhIcons.Profile, null) },
-        iconTextId = R.string.destination_profile,
+        labelTextId = R.string.destination_profile,
         route = Profile::class,
     )
 }
