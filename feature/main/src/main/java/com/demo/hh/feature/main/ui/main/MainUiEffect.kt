@@ -4,5 +4,5 @@ import com.demo.hh.core.common.network.FetchError
 import com.demo.hh.core.mvi.UiEffect
 
 sealed interface MainUiEffect : UiEffect {
-    data class ShowError(val error: FetchError)
+    data class ShowError(val error: FetchError) : MainUiEffect
 }
