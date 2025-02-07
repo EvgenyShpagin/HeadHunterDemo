@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 class GetRelevantVacanciesUseCase(
     private val repository: VacancyRepository
 ) {
-    operator fun invoke(count: Int = Int.MAX_VALUE): Result<Flow<List<Vacancy>>, FetchError> {
+    operator fun invoke(count: Int = Int.MAX_VALUE): Flow<Result<List<Vacancy>, FetchError>> {
         require(count > 0)
         return repository.getRelevant(count)
     }

@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 class GetRelevantVacancyCountUseCase(
     private val repository: VacancyRepository
 ) {
-    operator fun invoke(): Result<Flow<Int>, FetchError> {
+    operator fun invoke(): Flow<Result<Int, FetchError>> {
         return repository.getRelevantCount()
     }
 }

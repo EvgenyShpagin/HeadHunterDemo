@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 
 interface VacancyRepository {
-    fun getRelevant(count: Int = Int.MAX_VALUE): Result<Flow<List<Vacancy>>, FetchError>
-    fun getRelevantCount(): Result<Flow<Int>, FetchError>
+    fun getRelevant(count: Int = Int.MAX_VALUE): Flow<Result<List<Vacancy>, FetchError>>
+    fun getRelevantCount(): Flow<Result<Int, FetchError>>
     suspend fun setFavorite(id: String, favorite: Boolean): Result<Unit, ConnectionError>
 }
