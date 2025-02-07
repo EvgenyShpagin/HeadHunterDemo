@@ -21,10 +21,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.demo.hh.core.designsystem.component.HhFilledIconButton
+import com.demo.hh.core.designsystem.component.HhPrimaryButton
 import com.demo.hh.core.designsystem.component.HhTextField
 import com.demo.hh.core.designsystem.icon.HhIcons
 import com.demo.hh.core.designsystem.theme.Blue
@@ -36,6 +38,7 @@ import com.demo.hh.core.designsystem.theme.Text1
 import com.demo.hh.core.designsystem.theme.Title4
 import com.demo.hh.core.designsystem.theme.White
 import com.demo.hh.core.model.Offer
+import com.demo.hh.main.R
 
 private val TitleStyle = Title4.copy(color = White)
 private val ActionStyle = Text1.copy(color = Green)
@@ -164,4 +167,24 @@ internal fun MainSearchBar(
 @Composable
 private fun MainSearchBarPreview() {
     MainSearchBar("", {})
+}
+
+@Composable
+internal fun MoreVacancyButton(
+    moreVacancyCount: Int,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    HhPrimaryButton(
+        onClick = onClick,
+        modifier = modifier
+    ) {
+        Text(
+            text = pluralStringResource(
+                R.plurals.button_more_vacancies,
+                moreVacancyCount % 10,
+                moreVacancyCount
+            )
+        )
+    }
 }
