@@ -47,6 +47,7 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":feature:main"))
     implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlinx.serialization.json)
 
 
     // Architecture Components
