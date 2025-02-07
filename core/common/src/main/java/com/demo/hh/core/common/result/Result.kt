@@ -17,4 +17,8 @@ sealed class Result<out D, out E : Error> {
         }
         return this
     }
+
+    fun requireData(): D {
+        return (this as Success).data
+    }
 }
