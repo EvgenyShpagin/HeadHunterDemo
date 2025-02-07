@@ -17,8 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.pluralStringResource
-import androidx.compose.ui.res.stringArrayResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.demo.hh.core.designsystem.icon.HhIcons
@@ -27,10 +25,12 @@ import com.demo.hh.core.designsystem.theme.Grey1
 import com.demo.hh.core.designsystem.theme.Grey3
 import com.demo.hh.core.designsystem.theme.HhTheme
 import com.demo.hh.core.designsystem.theme.Text1
+import com.demo.hh.core.designsystem.theme.Title2
 import com.demo.hh.core.designsystem.theme.Title3
 import com.demo.hh.core.designsystem.theme.White
 import com.demo.hh.core.model.Date
 import com.demo.hh.core.model.Experience
+import com.demo.hh.core.model.Salary
 
 
 private val LookingNumberTextStyle = Text1.copy(color = Green)
@@ -40,6 +40,7 @@ private val PublishDateTextStyle = Text1.copy(color = Grey3)
 internal fun VacancyCard(
     title: String,
     lookingNumber: Int,
+    salary: Salary,
     town: String,
     company: String,
     experience: Experience,
@@ -71,6 +72,9 @@ internal fun VacancyCard(
                         LookingNumber(lookingNumber)
                     }
                     Text(title, style = Title3)
+                    if (salary !is Salary.Unspecified) {
+                        Text(salary.asString(), style = Title2)
+                    }
                     Column {
                         Text(town, style = Text1)
                         Spacer(Modifier.size(4.dp))
@@ -131,6 +135,7 @@ private fun VacancyCardPreview() {
             title = "Дизайнер для маркетплейсов Wildberries, Ozon ",
             town = "Минск",
             company = "Мобирикс",
+            salary = Salary.Exact(100_000),
             experience = Experience.From1To3Years,
             publishDate = Date(2025, 1, 1),
             isFavorite = false,

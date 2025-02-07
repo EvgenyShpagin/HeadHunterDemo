@@ -27,4 +27,9 @@
         <item>ноября</item>
         <item>декабря</item>
     </string-array>
+    <string name="salary_exact">%d %s</string>
+    <string name="salary_range">от %d до %d %c</string>
+    <string name="salary_range_from">от %d %c</string>
+    <string name="salary_range_to">до %d %c</string>
+    <string name="salary_not_specified">Не указана</string>
 </resources>
