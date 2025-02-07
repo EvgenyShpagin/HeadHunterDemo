@@ -7,8 +7,8 @@ data class Date(
 ) {
     init {
         require(year > 0)
-        require(month in 0 until 12)
-        require(dayOfMonth in 0 until 31)
+        require(month in 1..12)
+        require(dayOfMonth in 1..31)
     }
 
     override fun hashCode(): Int {
