@@ -76,6 +76,25 @@ class VacancyRepositoryImpl : VacancyRepository {
                                 "How do you approach user-centered design?",
                                 "What tools do you use for prototyping?"
                             )
+                        ),
+                        Vacancy(
+                            id = "4",
+                            lookingNumber = 26,
+                            title = "Android developer",
+                            address = Address("Los Angeles", "USA", ""),
+                            company = "Design Studio",
+                            experience = Experience.From3To6Years,
+                            publishedDate = Date(2023, 11, 5),
+                            isFavorite = true,
+                            salary = Salary.Exact(9000, '$'),
+                            schedules = Pair(EmploymentType.ProjectWork, Schedule.RemoteWork),
+                            appliedNumber = 20,
+                            description = "Create engaging and user-friendly design solutions.",
+                            responsibilities = "Design prototypes, conduct user testing, and iterate based on feedback.",
+                            questions = listOf(
+                                "How do you approach user-centered design?",
+                                "What tools do you use for prototyping?"
+                            )
                         )
                     )
                 )
@@ -84,7 +103,7 @@ class VacancyRepositoryImpl : VacancyRepository {
     }
 
     override fun getRelevantCount(): Flow<Result<Int, FetchError>> {
-        return flow { emit(Result.Success(3)) }
+        return flow { emit(Result.Success(4)) }
     }
 
     override suspend fun setFavorite(id: String, favorite: Boolean): Result<Unit, ConnectionError> {
