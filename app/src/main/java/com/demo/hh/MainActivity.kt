@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -30,7 +31,9 @@ class MainActivity : ComponentActivity() {
                     }) { innerPadding ->
                     HhNavHost(
                         navController = rememberNavController(),
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier
+                            .consumeWindowInsets(innerPadding)
+                            .padding(innerPadding)
                     )
                 }
             }
