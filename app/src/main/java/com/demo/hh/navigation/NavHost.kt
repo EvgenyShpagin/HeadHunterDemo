@@ -13,7 +13,6 @@ import com.demo.hh.fakes.Messages
 import com.demo.hh.fakes.MessagesScreen
 import com.demo.hh.fakes.Profile
 import com.demo.hh.fakes.ProfileScreen
-import com.demo.hh.feature.main.ui.navigation.MainDestination
 import com.demo.hh.feature.main.ui.navigation.mainScreen
 
 @Composable
@@ -23,7 +22,7 @@ fun HhNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = MainDestination,
+        startDestination = TopLevelDestination.MAIN.route,
         modifier = modifier
     ) {
         mainScreen(navController::popBackStack)

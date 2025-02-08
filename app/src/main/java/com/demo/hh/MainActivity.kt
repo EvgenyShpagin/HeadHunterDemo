@@ -20,17 +20,17 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             HhTheme {
+                val navController = rememberNavController()
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     bottomBar = {
                         HhNavigationBar(
-                            selectedIndex = 1,
-                            onClick = {},
+                            navController = navController,
                             modifier = Modifier.fillMaxWidth()
                         )
                     }) { innerPadding ->
                     HhNavHost(
-                        navController = rememberNavController(),
+                        navController = navController,
                         modifier = Modifier
                             .consumeWindowInsets(innerPadding)
                             .padding(innerPadding)

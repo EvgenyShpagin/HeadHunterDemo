@@ -45,6 +45,6 @@ fun MessagesScreen(modifier: Modifier = Modifier) {
 @Composable
 fun ProfileScreen(modifier: Modifier = Modifier) {
     Box(modifier = modifier.fillMaxSize()) {
-        Text("Favorites Screen", Modifier.align(Alignment.Center))
+        Text("Profile Screen", Modifier.align(Alignment.Center))
     }
 }
