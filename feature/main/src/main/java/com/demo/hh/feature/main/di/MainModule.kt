@@ -15,10 +15,9 @@ import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 
-val mainModule = module {
-    includes(dataModule, domainModule)
-    single<VacancyCardUiStateMapper> { VacancyCardUiStateMapperImpl(get()) }
-    viewModelOf(::MainViewModel)
+private val dataModule = module {
+    single<VacancyRepository> { VacancyRepositoryImpl() }
+    single<OfferRepository> { OfferRepositoryImpl() }
 }
 
 private val domainModule = module {
@@ -28,7 +27,8 @@ private val domainModule = module {
     factoryOf(::SetVacancyFavoriteUseCase)
 }
 
-private val dataModule = module {
-    single<VacancyRepository> { VacancyRepositoryImpl() }
-    single<OfferRepository> { OfferRepositoryImpl() }
+val mainModule = module {
+    includes(dataModule, domainModule)
+    single<VacancyCardUiStateMapper> { VacancyCardUiStateMapperImpl(get()) }
+    viewModelOf(::MainViewModel)
 }
