@@ -63,13 +63,13 @@ internal fun MainScreen(
 
     MainContent(
         offers = uiState.offers,
-        onOffersClick = { TODO() },
+        onOffersClick = { },
         vacancies = uiState.relevantVacancies,
         isLoading = uiState.isLoading,
         onFavoriteClick = { viewModel.onEvent(MainUiEvent.SetFavorite(it)) },
-        onApplyClick = { TODO() },
+        onApplyClick = { },
         moreVacancyCount = uiState.moreVacancyCount,
-        onMoreVacancyClicked = { TODO() },
+        onMoreVacancyClicked = { },
         onDismissError = { error = null },
         error = error,
         modifier = modifier.windowInsetsPadding(WindowInsets.systemBars)
